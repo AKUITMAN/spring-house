@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: house-zuul
+  cloud:
+    config:
+    #http://localhost:7500/qf-shop/dev
+      #uri: http://localhost:7500
+      discovery:
+      #我们配置再eureka上 得唯一标识
+        service-id: house-config
+        enabled: true
+      name: house
+      profile: dev
+server:
+  port: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+#当使用zuul进行请求
+zuul:
+  sensitive-headers:
