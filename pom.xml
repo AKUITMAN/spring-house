@@ -14,6 +14,8 @@
         <module>house-utils</module>
         <module>house-zuul</module>
         <module>house-config</module>
+        <module>house-user</module>
+        <module>house-send</module>
     </modules>
 
     <parent>
