@@ -5,6 +5,7 @@ import com.qf.dao.UserRepository;
 import com.qf.pojo.resp.BaseResp;
 import com.qf.pojo.vo.User;
 import com.qf.service.UserService;
+import com.qf.utils.JWTUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,37 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAndFlush(user);
         baseResp.setCode(200);
         baseResp.setMessage("激活成功");
+        return baseResp;
+    }
+
+    @Override
+    public BaseResp login(User user) {
+        //声明返回值
+        BaseResp baseResp = new BaseResp();
+        //获取到用户名
+        String email = user.getEmail();
+        User byEmail = userRepository.findByEmail(email);
+        //判断
+        if (byEmail==null){
+            baseResp.setCode(201);
+            baseResp.setMessage("未找到该用户");
+            return baseResp;
+        }
+        if (!user.getPassword().equals(byEmail.getPassword())){
+            baseResp.setCode(202);
+            baseResp.setMessage("密码错误");
+            return baseResp;
+        }
+        //使用JWT进行加密
+        JWTUtils jwtUtils = new JWTUtils();
+        //将信息放置在JWT的负载部分
+        Map map=new HashMap<>();
+        map.put("email",byEmail.getEmail());
+        map.put("id",byEmail.getId());
+        String token = jwtUtils.token(map);
+        baseResp.setCode(200);
+        baseResp.setMessage("登陆成功");
+        baseResp.setData(token);
         return baseResp;
     }
 }

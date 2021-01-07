@@ -7,4 +7,6 @@ public interface UserService {
     BaseResp registry(User user);
 
     BaseResp editStatus(Integer id);
+
+    BaseResp login(User user);
 }

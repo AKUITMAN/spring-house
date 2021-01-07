@@ -21,5 +21,8 @@ public class UserController {
     public BaseResp editStatus(@PathVariable("id")Integer id){
         return userService.editStatus(id);
     }
-
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public BaseResp login(@RequestBody User user){
+        return userService.login(user);
+    }
 }
