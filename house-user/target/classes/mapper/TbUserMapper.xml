@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.TbUserMapper">
+    <select id="findByUserName" resultType="com.qf.pojo.vo.TbUser">
+select user_id as id,user_name as userName ,password as password from tb_user where user_name = #{username}
+</select>
+</mapper>

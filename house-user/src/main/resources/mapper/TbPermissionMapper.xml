@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.TbPermissionMapper">
+    <select id="findPermissionByUserName" resultType="com.qf.pojo.req.TbPermission">
+        select tp.per_name as permissionName
+        from tb_user tu,
+        tb_role tr,
+        tb_user_role tur,
+        tb_permission tp,
+        tb_role_permission trp
+        where tu.user_id = tur.user_id
+        and tur.role_id = tr.role_id
+        and tr.role_id =trp.role_id
+        and trp.per_id = tp.per_id
+        and tu.user_name = #{username};
+    </select>
+</mapper>
