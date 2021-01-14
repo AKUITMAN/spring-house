@@ -17,6 +17,7 @@
         <module>house-user</module>
         <module>house-send</module>
         <module>house-city</module>
+        <module>house-chat</module>
     </modules>
 
     <parent>
