@@ -17,4 +17,9 @@ public class User {
     private String password;
 
     private Integer status;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    private String image;
 }

@@ -6,6 +6,8 @@ import com.qf.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -24,5 +26,9 @@ public class UserController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public BaseResp login(@RequestBody User user){
         return userService.login(user);
+    }
+    @RequestMapping("/getUser")
+    public BaseResp getUser(HttpServletRequest request){
+        return userService.getUser(request);
     }
 }

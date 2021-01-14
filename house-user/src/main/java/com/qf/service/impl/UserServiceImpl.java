@@ -5,11 +5,14 @@ import com.qf.dao.UserRepository;
 import com.qf.pojo.resp.BaseResp;
 import com.qf.pojo.vo.User;
 import com.qf.service.UserService;
+import com.qf.utils.CookieUtils;
 import com.qf.utils.JWTUtils;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -37,6 +40,17 @@ public class UserServiceImpl implements UserService {
             return baseResp;
         }
         User user1=userRepository.findByEmail(user.getEmail());
+        if (user.getUserName()==null){
+            baseResp.setCode(204);
+            baseResp.setMessage("用户名不能为空");
+            return baseResp;
+        }
+        User byUserName = userRepository.findByUserName(user.getUserName());
+        if (byUserName!=null){
+            baseResp.setCode(203);
+            baseResp.setMessage("用户名重复");
+            return baseResp;
+        }
         if (user1!=null){
             baseResp.setCode(202);
             baseResp.setMessage("该邮箱已被注册");
@@ -101,10 +115,26 @@ public class UserServiceImpl implements UserService {
         Map map=new HashMap<>();
         map.put("email",byEmail.getEmail());
         map.put("id",byEmail.getId());
+        map.put("userName",byEmail.getUserName());
+        map.put("image",byEmail.getImage());
         String token = jwtUtils.token(map);
         baseResp.setCode(200);
         baseResp.setMessage("登陆成功");
         baseResp.setData(token);
+        return baseResp;
+    }
+
+    @Override
+    public BaseResp getUser(HttpServletRequest request) {
+        CookieUtils cookieUtils = new CookieUtils();
+        Cookie[] cookies = request.getCookies();
+        String token = cookieUtils.getToken(cookies);
+        //从JWT获取用户信息
+        JWTUtils jwtUtils = new JWTUtils();
+        Map verify = jwtUtils.Verify(token);
+        BaseResp baseResp = new BaseResp();
+        baseResp.setCode(200);
+        baseResp.setData(verify);
         return baseResp;
     }
 }
