@@ -33,14 +33,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public BaseResp registry(User user) {
         //将用户信息存储到数据库中，将用户的id以及email地址获取，发送给rabbitmq
+        if (user.getImage()==null||user.getImage()==""){
+            user.setImage("https://www.google.com/images/nav_logo299_hr.webp");
+        }
         BaseResp baseResp = new BaseResp();
-        if (user.getEmail()==null){
+        if (user.getEmail()==null||user.getEmail()==""){
             baseResp.setCode(201);
             baseResp.setMessage("邮箱不能为空");
             return baseResp;
         }
         User user1=userRepository.findByEmail(user.getEmail());
-        if (user.getUserName()==null){
+        if (user.getUserName()==null||user.getUserName()==""){
             baseResp.setCode(204);
             baseResp.setMessage("用户名不能为空");
             return baseResp;

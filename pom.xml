@@ -16,6 +16,7 @@
         <module>house-config</module>
         <module>house-user</module>
         <module>house-send</module>
+        <module>house-city</module>
     </modules>
 
     <parent>

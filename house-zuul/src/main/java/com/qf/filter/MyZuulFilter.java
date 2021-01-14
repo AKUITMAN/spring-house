@@ -42,6 +42,17 @@ public class MyZuulFilter extends ZuulFilter {
         RequestContext currentContext = RequestContext.getCurrentContext();
         HttpServletRequest request = currentContext.getRequest();
         String requestURI = request.getRequestURI();
+        String[] split = requestURI.split("/");
+        /*if (split[2].equals("editStatus")){
+            return false;
+        }*/
+        //放行editStatus
+        for (String str:split
+             ) {
+            if (str.equals("editStatus")){
+                return false;
+            }
+        }
         if (URL_LIST.contains(requestURI)){
             //放行login请求
             return false;
@@ -101,5 +112,8 @@ public class MyZuulFilter extends ZuulFilter {
         URL_LIST.add("/house-user/user/login");
         URL_LIST.add("/house-user/tbuser/login");
         URL_LIST.add("/house-user/user/registry");
+        URL_LIST.add("/house-user/user/editStatus");
+        URL_LIST.add("/house-city/city/findAll");
+        URL_LIST.add("/house-city/city/findByPid");
     }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.CityMapper">
+    <select id="findByPid" resultType="com.qf.pojo.vo.City">
+        select id,city,p_id as pid from city where p_id=#{pid};
+    </select>
+
+</mapper>
