@@ -1,4 +1,4 @@
-package com.qf.listen;
+package src.main.java.com.qf.listen;
 
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;

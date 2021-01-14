@@ -17,8 +17,8 @@ spring:
 #        native:
 #          search-locations: classpath:properites/
          git:
-          uri: https://github.com/AKUITMAN/springcloud-house-config.git
-          search-paths: springcloud-house-config
+          uri: https://github.com/gongcbo/2007-config.git
+          search-paths: 2007-config
           default-label: main
 eureka:
   client:

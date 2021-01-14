@@ -14,6 +14,10 @@
         <module>house-utils</module>
         <module>house-zuul</module>
         <module>house-config</module>
+        <module>house-search</module>
+        <module>house-utils</module>
+        <module>house-address</module>
+        <module>house-house</module>
         <module>house-user</module>
         <module>house-send</module>
         <module>house-city</module>

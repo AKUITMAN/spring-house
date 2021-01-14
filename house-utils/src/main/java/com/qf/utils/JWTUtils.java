@@ -25,7 +25,10 @@ public class JWTUtils {
         //计算过期时间
         long l = System.currentTimeMillis();
 
+
         l+=60*60*1000;
+
+        l+=60*1000;
 
         Date date = new Date(l);
         //自定义头部

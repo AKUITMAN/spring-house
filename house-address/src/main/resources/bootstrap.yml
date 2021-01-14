@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: house-address
+  cloud:
+    config:
+    #http://localhost:7500/qf-shop/dev
+      #uri: http://localhost:7500
+      discovery:
+      #我们配置再eureka上 得唯一标识
+        service-id: house-config
+        enabled: true
+      name: house
+      profile: dev
+server:
+  port: 8003
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka

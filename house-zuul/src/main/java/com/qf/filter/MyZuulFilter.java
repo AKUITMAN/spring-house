@@ -7,6 +7,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import com.qf.pojo.resp.BaseResp;
+import com.qf.utils.CookieUtils;
+import com.qf.utils.JWTUtils;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
@@ -83,6 +86,7 @@ public class MyZuulFilter extends ZuulFilter {
             writer.print(JSONObject.toJSON(baseResp));
             currentContext.setSendZuulResponse(false);
             return baseResp;
+
         }
         CookieUtils cookieUtils = new CookieUtils();
         String token = cookieUtils.getToken(cookies);
@@ -94,6 +98,8 @@ public class MyZuulFilter extends ZuulFilter {
             response.setContentType("application/json;charset=utf-8");
             baseResp.setMessage("登录失效，重新登录");
             baseResp.setCode(20002);
+
+            baseResp.setCode(20001);
             PrintWriter writer = null;
             try {
                 writer = response.getWriter();
@@ -103,6 +109,7 @@ public class MyZuulFilter extends ZuulFilter {
             writer.print(JSONObject.toJSON(baseResp));
             currentContext.setSendZuulResponse(false);
             return baseResp;
+
         }
         return null;
     }
@@ -115,5 +122,11 @@ public class MyZuulFilter extends ZuulFilter {
         URL_LIST.add("/house-user/user/editStatus");
         URL_LIST.add("/house-city/city/findAll");
         URL_LIST.add("/house-city/city/findByPid");
+//        URL_LIST.add("/qfshop-user/user/login");
+//        URL_LIST.add("/qfshop-goods/goods/findAll");
+        URL_LIST.add("/house-search/search/selectKey");
+        URL_LIST.add("/house-address/address/addressfindAll");
+        URL_LIST.add("/house-search/search/selectHouse");
+        URL_LIST.add("/house-house/house/findById");
     }
 }
