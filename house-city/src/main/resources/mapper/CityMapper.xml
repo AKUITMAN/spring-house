@@ -3,8 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qf.dao.CityMapper">
-    <select id="findByPid" resultType="com.qf.pojo.vo.City">
-        select id,city,p_id as pid from city where p_id=#{pid};
+    <resultMap id="BaseResp" type="com.qf.pojo.vo.City">
+        <id property="id" column="id"></id>
+        <result property="pid" column="p_id"></result>
+        <result property="Value" column="city"></result>
+        <result property="address" column="city"></result>
+    </resultMap>
+    <select id="findByPid" resultMap="BaseResp">
+        select * from city where p_id=#{pid};
+    </select>
+
+    <select id="cityFindAll" resultMap="BaseResp">
+        select * from city ;
     </select>
 
 </mapper>

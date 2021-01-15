@@ -9,4 +9,5 @@ import java.util.List;
 @Mapper
 public interface CityMapper {
     List<City> findByPid(@Param("pid")Integer pid);
+    List<City> cityFindAll();
 }

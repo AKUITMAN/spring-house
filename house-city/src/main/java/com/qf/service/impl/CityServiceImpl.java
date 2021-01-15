@@ -6,6 +6,7 @@ import com.qf.pojo.vo.City;
 import com.qf.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -17,11 +18,17 @@ public class CityServiceImpl implements CityService {
     @Override
     public BaseResp findByPid(Integer pid) {
         BaseResp baseResp = new BaseResp();
-        List<City> byPid = cityMapper.findByPid(pid);
-        baseResp.setCode(200);
-        baseResp.setData(byPid);
-        baseResp.setMessage("查询成功");
-
+        if (!StringUtils.isEmpty(pid)) {
+            List<City> byPid = cityMapper.findByPid(pid);
+            baseResp.setCode(200);
+            baseResp.setData(byPid);
+            baseResp.setMessage("查询成功");
+        }else {
+            List<City> cities = cityMapper.cityFindAll();
+            baseResp.setCode(200);
+            baseResp.setData(cities);
+            baseResp.setMessage("查询成功");
+        }
         return baseResp;
     }
 }
