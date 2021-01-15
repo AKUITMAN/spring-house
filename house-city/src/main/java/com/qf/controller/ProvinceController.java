@@ -12,7 +12,7 @@ public class ProvinceController {
     @Autowired
     private ProvinceService provinceService;
 
-    @RequestMapping("/findAll")
+    @RequestMapping("/findAll5")
     public BaseResp findAll(){
         return provinceService.findAll();
     }
