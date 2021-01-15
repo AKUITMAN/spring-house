@@ -8,8 +8,9 @@ public class City {
 
     private Integer id;
 
-    private String city;
+    private String address;
 
+    private String Value;
 
     private Integer pid;
 }

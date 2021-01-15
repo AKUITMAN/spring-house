@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.ProvinceMapper">
+    <resultMap id="BaseResp" type="com.qf.pojo.vo.Province">
+        <id property="id" column="id"></id>
+        <result property="Value" column="province"></result>
+        <result property="address" column="province"></result>
+    </resultMap>
+    <select id="ProvincefindAll" resultMap="BaseResp">
+        select * from province ;
+    </select>
+
+</mapper>
