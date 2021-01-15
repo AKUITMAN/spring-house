@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.OrderMapper">
+    <select id="findByUserId" resultType="com.qf.pojo.resp.HouseResp">
+        SELECT h.id,h.a_house AS aHouse,h.price AS price,l.type AS typeName,h.house_type AS houseType,h.house_arae AS houseArae,h.floor,h.orientation,h.rent_time AS rentTime,h.cash,h.pic1,h.pic2,h.pic3,h.pic4,h.pic5, h.a_id AS aId, h.a_name AS aName
+        FROM house h,collect c,`user` u,lease l
+        WHERE
+        h.id=c.h_id
+        and h.lease=l.id
+        and u.id=#{uid}
+    </select>
+</mapper>

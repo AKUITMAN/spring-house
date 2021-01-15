@@ -130,5 +130,6 @@ public class MyZuulFilter extends ZuulFilter {
         URL_LIST.add("/house-search/search/selectHouse");
         URL_LIST.add("/house-house/house/findById");
         URL_LIST.add("/house-province/province/provincefindAll");
+        URL_LIST.add("/house-order/order/findByUserId");
     }
 }

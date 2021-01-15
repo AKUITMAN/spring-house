@@ -4,14 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-/**
- * Created by 54110 on 2020/12/31.
- */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class HouseSendApplication {
-
+public class ChattingApplication {
     public static void main(String[] args) {
-        SpringApplication.run(HouseSendApplication.class);
+        SpringApplication.run(ChattingApplication.class,args);
     }
 }

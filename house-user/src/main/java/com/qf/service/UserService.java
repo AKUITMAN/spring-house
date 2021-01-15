@@ -12,5 +12,5 @@ public interface UserService {
 
     BaseResp login(User user);
 
-    BaseResp getUser(HttpServletRequest request);
+    BaseResp getUser(String token);
 }

@@ -28,7 +28,7 @@ public class UserController {
         return userService.login(user);
     }
     @RequestMapping("/getUser")
-    public BaseResp getUser(HttpServletRequest request){
-        return userService.getUser(request);
+    public BaseResp getUser(@RequestParam("token")String token){
+        return userService.getUser(token);
     }
 }

@@ -128,10 +128,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public BaseResp getUser(HttpServletRequest request) {
-        CookieUtils cookieUtils = new CookieUtils();
-        Cookie[] cookies = request.getCookies();
-        String token = cookieUtils.getToken(cookies);
+    public BaseResp getUser(String token) {
+        //CookieUtils cookieUtils = new CookieUtils();
+        //Cookie[] cookies = request.getCookies();
+        //String token = cookieUtils.getToken(cookies);
         //从JWT获取用户信息
         JWTUtils jwtUtils = new JWTUtils();
         Map verify = jwtUtils.Verify(token);
