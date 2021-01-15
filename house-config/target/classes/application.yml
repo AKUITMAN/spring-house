@@ -4,21 +4,21 @@ spring:
   zipkin:
     base-url: http://localhost:7800
   sleuth:
-      sampler:
-        probability: 1.0
+    sampler:
+      probability: 1.0
   application:
     name: house-config
   #使用本地配置得方式
-#  profiles:
-#    active: native
+  #  profiles:
+  #    active: native
   cloud:
     config:
       server:
-#        native:
-#          search-locations: classpath:properites/
-         git:
-          uri: https://github.com/gongcbo/2007-config.git
-          search-paths: 2007-config
+        #        native:
+        #          search-locations: classpath:properites/
+        git:
+          uri: https://github.com/AKUITMAN/springcloud-house-config.git
+          search-paths: springcloud-house-config
           default-label: main
 eureka:
   client:

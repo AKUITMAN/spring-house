@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.HouseMapper">
+    <select id="findById" resultType="com.qf.pojo.resp.HouseResp">
+       SELECT h.id,h.a_house AS aHouse,h.price AS price,l.type AS typeName,h.house_type AS houseType,h.house_arae AS houseArae,h.floor,h.orientation,h.rent_time AS rentTime,h.cash,h.pic1,h.pic2,h.pic3,h.pic4,h.pic5, h.a_id AS aId, h.a_name AS aName FROM house h,lease l WHERE h.lease = l.id AND h.`id` = #{id}
+    </select>
+
+<!--    <insert id="insertLike">-->
+<!--      INSERT  INTO t_user_goods (user_id,goods_id,status) VALUES (#{userid},#{goodsid},#{status})-->
+<!--    </insert>-->
+
+<!--    <delete id="deleteLike">-->
+<!--      delete  from t_user_goods  where id = #{id}-->
+<!--    </delete>-->
+
+<!--    <select id="findAll" resultType="com.qf.pojo.vo.TGoods">-->
+<!--        select * from t_goods;-->
+<!--    </select>-->
+
+<!--    <select id="findById" resultType="com.qf.pojo.vo.TGoods">-->
+<!--        select * from t_goods where id = #{id};-->
+<!--    </select>-->
+</mapper>

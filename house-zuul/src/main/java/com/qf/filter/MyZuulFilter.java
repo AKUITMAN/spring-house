@@ -120,6 +120,7 @@ public class MyZuulFilter extends ZuulFilter {
         URL_LIST.add("/house-user/tbuser/login");
         URL_LIST.add("/house-user/user/registry");
         URL_LIST.add("/house-user/user/editStatus");
+        URL_LIST.add("/house-user/user/getUser");
         URL_LIST.add("/house-city/city/findAll");
         URL_LIST.add("/house-city/city/findByPid");
 //        URL_LIST.add("/qfshop-user/user/login");

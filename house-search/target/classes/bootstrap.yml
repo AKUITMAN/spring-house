@@ -1,16 +1,18 @@
-server:
-  port: 8082
 spring:
   application:
-    name: qfshop-websocket
+    name: house-search
   cloud:
     config:
+    #http://localhost:7500/qf-shop/dev
+      #uri: http://localhost:7500
       discovery:
+      #我们配置再eureka上 得唯一标识
         service-id: house-config
         enabled: true
       name: house
       profile: dev
-      label: main
+server:
+  port: 8333
 eureka:
   client:
     service-url:

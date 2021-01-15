@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.AddressMapper">
+    <select id="AddressfindAll" resultType="com.qf.pojo.vo.Address">
+        select id,district,c_id AS cid from address where c_id = 116
+    </select>
+
+<!--    <insert id="insertLike">-->
+<!--      INSERT  INTO t_user_goods (user_id,goods_id,status) VALUES (#{userid},#{goodsid},#{status})-->
+<!--    </insert>-->
+
+<!--    <delete id="deleteLike">-->
+<!--      delete  from t_user_goods  where id = #{id}-->
+<!--    </delete>-->
+
+<!--    <select id="findAll" resultType="com.qf.pojo.vo.TGoods">-->
+<!--        select * from t_goods;-->
+<!--    </select>-->
+
+<!--    <select id="findById" resultType="com.qf.pojo.vo.TGoods">-->
+<!--        select * from t_goods where id = #{id};-->
+<!--    </select>-->
+</mapper>

@@ -22,6 +22,8 @@
         <module>house-send</module>
         <module>house-city</module>
         <module>house-chat</module>
+        <module>house-websocket</module>
+        <module>house-chat</module>
     </modules>
 
     <parent>

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: house-city
+    name: house-house
   cloud:
     config:
     #http://localhost:7500/qf-shop/dev
@@ -13,13 +13,8 @@ spring:
       profile: dev
       label: main
 server:
-  port: 8004
+  port: 8005
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
